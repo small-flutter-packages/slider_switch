@@ -2,6 +2,8 @@
 
 A Slinding Switch for flutter.
 
+![Slider Switch](./images/slider_switch.png)
+
 ## Getting Started
 
 Add dependency to pubspec.yaml
@@ -10,7 +12,10 @@ Add dependency to pubspec.yaml
 flutter:
     ...
     slider_switch: ^ 0.0.9
+    ...
 ```
+
+add the widget to your code
 
 ```
 import 'package:slider_switch/slider_switch.dart';
