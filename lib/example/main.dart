@@ -76,7 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
               // initialStatus: true, // default: false (false|true)
               // width: 50.0,
               // lenght: 120.0,
-              // orientation: Axis.horizontal, // default: Axis.vertical (Axis.vertical|Axis.horizontal)
+              orientation: Axis
+                  .horizontal, // default: Axis.vertical (Axis.vertical|Axis.horizontal)
               statusColorOpacity: 0.7, // default 0.5
               onChanged: (bool value) => print("new speaking value $value"),
               statusOnIcon: Icons.record_voice_over, // default: Icons.volume_up

@@ -1,6 +1,6 @@
 name: slider_switch
-description: A slider switch for flutter.
-version: 0.0.10
+description: A small and fully customizable toggleable slider switch for flutter.
+version: 0.0.11
 homepage: https://github.com/small-flutter-packages/slider_switch.git
 
 environment:
