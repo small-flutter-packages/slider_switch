@@ -1,3 +1,8 @@
+## 0.0.12
+
+* fixed example layout
+* added parameters documentation
+
 ## 0.0.11
 
 * fixed example layout

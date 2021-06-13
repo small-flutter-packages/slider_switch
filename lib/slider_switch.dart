@@ -4,23 +4,51 @@ import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 
 class SliderSwitch extends StatefulWidget {
+  /// The orientation of the slider switch its horizontal or vertical.
+  /// Default value: Axis.vertical
   final Axis orientation;
+
+  /// Adds a spring animation when the user let go the button switch.
+  /// Default value: true
   final bool withSpring;
 
+  /// initial status for the switch.
+  /// Default value: false
   final bool initialStatus;
+
+  /// Callback function called when the switch change state.
+  ///
   final ValueChanged<bool>? onChanged;
 
   // dimensions
+  /// Width in vertical orientation or height in horizontal orientation of the switch.
+  /// Default value: 50.0
   final double width;
+
+  /// Lenght in horizontal orientation or height in vertical orientation.
+  /// Default value: 130.0
   final double lenght;
 
   // status colors
+  /// Color used as background when the switch is in "On" state.
+  /// Default value: Colors.green
   final Color statusOnColor;
+
+  /// Color used as background when the switch is in "Off" state.
+  /// Default value: Colors.grey
   final Color statusOffColor;
+
+  /// Value of opacity for the background color.
+  /// Default value: 0.5
   final double statusColorOpacity;
 
   // status icons
+  /// Icon used when the switch is in "On" state.
+  /// Default value: Icons.volume_up
   final IconData statusOnIcon;
+
+  /// Icon used when the switch is in "Off" state.
+  /// Default value: Icons.volume_off
   final IconData statusOffIcon;
 
   SliderSwitch({
@@ -52,7 +80,6 @@ class _SliderSwitchState extends State<SliderSwitch>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _status = widget.initialStatus;
