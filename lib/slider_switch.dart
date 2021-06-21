@@ -3,6 +3,8 @@ library slider_switch;
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 
+/// An small and fully customizable toggleable slider switch for flutter.
+/// It supports custom color, icon for the on and off states
 class SliderSwitch extends StatefulWidget {
   /// The orientation of the slider switch its horizontal or vertical.
   /// Default value: Axis.vertical
@@ -51,6 +53,10 @@ class SliderSwitch extends StatefulWidget {
   /// Default value: Icons.volume_off
   final IconData statusOffIcon;
 
+  /// Is enabled the button.
+  /// Default value: true
+  final bool isEnabled;
+
   SliderSwitch({
     Key? key,
     this.initialStatus = false,
@@ -64,6 +70,7 @@ class SliderSwitch extends StatefulWidget {
     this.statusOnIcon = Icons.volume_up,
     this.statusOffIcon = Icons.volume_off,
     this.statusColorOpacity = 0.5,
+    this.isEnabled = true,
   }) : super(key: key);
 
   @override
@@ -130,8 +137,9 @@ class _SliderSwitchState extends State<SliderSwitch>
                   child: Icon(
                     widget.statusOffIcon,
                     size: widget.width / 2,
-                    color:
-                        !_status ? Colors.black : Colors.white.withOpacity(0.7),
+                    color: !_status && widget.isEnabled
+                        ? Colors.black
+                        : Colors.white.withOpacity(0.7),
                   ),
                 ),
                 Positioned(
@@ -144,20 +152,24 @@ class _SliderSwitchState extends State<SliderSwitch>
                   child: Icon(
                     widget.statusOnIcon,
                     size: widget.width / 2,
-                    color:
-                        _status ? Colors.black : Colors.white.withOpacity(0.7),
+                    color: _status && widget.isEnabled
+                        ? Colors.black
+                        : Colors.white.withOpacity(0.7),
                   ),
                 ),
                 GestureDetector(
-                  onHorizontalDragStart: _onPanStart,
-                  onHorizontalDragUpdate: _onPanUpdate,
-                  onHorizontalDragEnd: _onPanEnd,
+                  onHorizontalDragStart: widget.isEnabled ? _onPanStart : null,
+                  onHorizontalDragUpdate:
+                      widget.isEnabled ? _onPanUpdate : null,
+                  onHorizontalDragEnd: widget.isEnabled ? _onPanEnd : null,
                   child: SlideTransition(
                     position: _animation,
                     child: SizedBox(
                       width: widget.width - 10,
                       child: Material(
-                        color: Colors.white.withOpacity(0.6),
+                        color: widget.isEnabled
+                            ? Colors.white.withOpacity(0.6)
+                            : Colors.white24,
                         shape: const CircleBorder(),
                         elevation: 5.0,
                         child: Center(
@@ -187,6 +199,7 @@ class _SliderSwitchState extends State<SliderSwitch>
     );
   }
 
+  /// Calculate the delta position of the button as is dragged
   double offsetFromGlobalPos(Offset globalPosition) {
     RenderBox box = context.findRenderObject() as RenderBox;
     Offset local = box.globalToLocal(globalPosition);

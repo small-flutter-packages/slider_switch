@@ -42,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SliderSwitch(
+                  isEnabled: false, // disable the button
                   // initialStatus: true,
                   // width: 50.0,
                   // lenght: 120.0,
