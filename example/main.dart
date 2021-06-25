@@ -49,6 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   // orientation: Axis.horizontal,
                   statusColorOpacity: 0.7,
                   onChanged: (bool value) => print("new listen value $value"),
+                  // statusOnIconOffset: Offset(0.0, 0.0), // offset the position of the status on icon
+                  // statusOffIconOffset: Offset(0.0, 0.0), // offset the position of the status off icon
                 ),
                 SliderSwitch(
                   // initialStatus: true, // default: false (false|true)
@@ -62,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   statusOffIcon:
                       Icons.voice_over_off, // default: Icons.volume_off
                   statusOnColor: Colors.red, // default: Color.green
+                  statusOnIconOffset: Offset(-5.0, 0.0),
                 ),
               ],
             ),

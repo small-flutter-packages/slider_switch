@@ -53,6 +53,18 @@ class SliderSwitch extends StatefulWidget {
   /// Default value: Icons.volume_off
   final IconData statusOffIcon;
 
+  /// statusOnIconOffset used to fine position the status icon
+  /// Default value: Offset(0.0,0.0)
+  /// dx: positive values ofset the position to the right
+  /// dy: positive values offset the position up
+  final Offset statusOnIconOffset;
+
+  /// statusOffIconOffset used to fine position the status icon
+  /// Default value: Offset(0.0,0.0)
+  /// dx: positive values ofset the position to the right
+  /// dy: positive values offset the position up
+  final Offset statusOffIconOffset;
+
   /// Is enabled the button.
   /// Default value: true
   final bool isEnabled;
@@ -69,6 +81,8 @@ class SliderSwitch extends StatefulWidget {
     this.statusOffColor = Colors.grey,
     this.statusOnIcon = Icons.volume_up,
     this.statusOffIcon = Icons.volume_off,
+    this.statusOnIconOffset = const Offset(0.0, 0.0),
+    this.statusOffIconOffset = const Offset(0.0, 0.0),
     this.statusColorOpacity = 0.5,
     this.isEnabled = true,
   }) : super(key: key);
@@ -128,12 +142,14 @@ class _SliderSwitchState extends State<SliderSwitch>
               alignment: Alignment.center,
               children: [
                 Positioned(
+                  // Off Icon
                   left: widget.orientation == Axis.horizontal
-                      ? widget.width / 4
-                      : null,
+                      ? widget.width / 4.0 + widget.statusOffIconOffset.dx
+                      : widget.width / 4.0 + widget.statusOffIconOffset.dy,
                   bottom: widget.orientation == Axis.horizontal
-                      ? null
-                      : widget.width / 4,
+                      ? (widget.width / 4.0 + widget.statusOffIconOffset.dy)
+                      // ? null
+                      : widget.width / 4.0 + widget.statusOffIconOffset.dx,
                   child: Icon(
                     widget.statusOffIcon,
                     size: widget.width / 2,
@@ -143,12 +159,13 @@ class _SliderSwitchState extends State<SliderSwitch>
                   ),
                 ),
                 Positioned(
+                  // On Icon
                   right: widget.orientation == Axis.horizontal
-                      ? widget.width / 4
-                      : null,
+                      ? widget.width / 4.0 - widget.statusOnIconOffset.dx
+                      : widget.width / 4.0 - widget.statusOnIconOffset.dy,
                   top: widget.orientation == Axis.horizontal
-                      ? null
-                      : widget.width / 4,
+                      ? widget.width / 4.0 - widget.statusOnIconOffset.dy
+                      : widget.width / 4.0 - widget.statusOnIconOffset.dx,
                   child: Icon(
                     widget.statusOnIcon,
                     size: widget.width / 2,
